@@ -36,10 +36,6 @@ public class SecurityController {
 
     @PostMapping("/signup")
     @Operation(summary = "Register User", description = "Register user using email, username and password")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "User registered successfully"),
-            @ApiResponse(responseCode = "400", description = "User already exists", content = @Content)
-    })
     ResponseEntity<?> signup(@RequestBody RegisterRequest registerRequest) {
         logger.info("Попытка на регистрацию пользователем с email: {}", registerRequest.getEmail());
 
@@ -65,11 +61,6 @@ public class SecurityController {
 
     @PostMapping("/signin")
     @Operation(summary = "Login user", description = "Login user using email and password")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "User authenticated successfully"),
-            @ApiResponse(responseCode = "401", description = "User is not registered", content = @Content)
-    }
-    )
     ResponseEntity<?> signin(@RequestBody LoginRequest loginRequest) {
         logger.info("Попытка на аутентификацию пользователем с email: {}", loginRequest.getEmail());
 

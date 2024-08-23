@@ -109,7 +109,7 @@ public class AdvertisementController {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch (Exception e) {
             logger.error("Ошибка при размещении ставки пользователем с email {}: {}", userDetails.getUsername(), e.getMessage(), e);
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
